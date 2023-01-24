@@ -6,9 +6,9 @@ Simple AWS VM for testing.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ingress_cidrs | A list of CIDRs to allow incomng traffic from. | `list(string)` | n/a | yes |
+| ingress_cidrs | A list of CIDRs to allow incoming traffic from. | `list(string)` | n/a | yes |
 | name_prefix | A prefix to insert in the created resources' names. | `string` | `""` | no |
-| subnet_id | The Id of the AWS Subent in which to create the VM. | `string` | n/a | yes |
+| subnet_id | The Id of the AWS subnet in which to create the VM. | `string` | n/a | yes |
 | vm_image_id | The Id of the AWS AMI to use for the VM. | `string` | n/a | yes |
 | vm_key_name | The name of the AWS key pair to use for the VM. | `string` | n/a | yes |
 | vm_type | The type of the VM. | `string` | `"t3.medium"` | no |

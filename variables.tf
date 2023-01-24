@@ -15,12 +15,12 @@ variable "vpc_id" {
 
 variable "subnet_id" {
   type        = string
-  description = "The Id of the AWS Subent in which to create the VM."
+  description = "The Id of the AWS subnet in which to create the VM."
 }
 
 variable "ingress_cidrs" {
   type        = list(string)
-  description = "A list of CIDRs to allow incomng traffic from."
+  description = "A list of CIDRs to allow incoming traffic from."
 }
 
 # VM settings
