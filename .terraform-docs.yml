@@ -1,0 +1,31 @@
+content: |
+  # Terraform Module AWS VM DEV
+
+  Simple AWS VM for testing.
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  {{ .Requirements }}
+
+  {{ .Resources }}
+
+  ## Documentation
+
+  Generated with [terraform-docs](https://terraform-docs.io/user-guide/introduction/) .
+
+settings:
+  anchor: false
+  color: true
+  default: true
+  description: false
+  escape: false
+  hide-empty: true
+  html: false
+  indent: 2
+  lockfile: false
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true
