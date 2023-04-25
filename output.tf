@@ -1,9 +1,14 @@
 output "vm_id" {
-  description = "The Id of the VM."
-  value       = aws_instance.aws_vm_dev.id
+  description = "Mapping of the VMs name and id."
+  value       = { for i in aws_instance.aws_vm_dev : i.tags["Name"] => i.id }
 }
 
 output "vm_public_ip" {
-  description = "The public IP address of the VM."
-  value       = aws_instance.aws_vm_dev.public_ip
+  description = "Mapping of the VMs name and public ip."
+  value       = { for i in aws_instance.aws_vm_dev : i.tags["Name"] => i.public_ip }
+}
+
+output "vm_private_ip" {
+  description = "Mapping of the VMs name and private ip."
+  value       = { for i in aws_instance.aws_vm_dev : i.tags["Name"] => i.private_ip }
 }

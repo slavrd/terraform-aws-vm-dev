@@ -25,6 +25,12 @@ variable "ingress_cidrs" {
 
 # VM settings
 
+variable "vm_count" {
+  type        = number
+  description = "The number of VMs to create."
+  default     = 1
+}
+
 variable "vm_image_id" {
   type        = string
   description = "The Id of the AWS AMI to use for the VM."
