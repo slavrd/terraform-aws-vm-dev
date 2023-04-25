@@ -1,6 +1,6 @@
 # Terraform Module AWS VM DEV
 
-Simple AWS VM for testing.
+Simple AWS VMs for testing. Can create multiple VMs using single security group where all traffic between the VMs is allowed.
 
 ## Inputs
 
@@ -9,6 +9,7 @@ Simple AWS VM for testing.
 | ingress_cidrs | A list of CIDRs to allow incoming traffic from. | `list(string)` | n/a | yes |
 | name_prefix | A prefix to insert in the created resources' names. | `string` | `""` | no |
 | subnet_id | The Id of the AWS subnet in which to create the VM. | `string` | n/a | yes |
+| vm_count | The number of VMs to create. | `number` | `1` | no |
 | vm_image_id | The Id of the AWS AMI to use for the VM. | `string` | n/a | yes |
 | vm_key_name | The name of the AWS key pair to use for the VM. | `string` | n/a | yes |
 | vm_type | The type of the VM. | `string` | `"t3.medium"` | no |
@@ -19,8 +20,9 @@ Simple AWS VM for testing.
 
 | Name | Description |
 |------|-------------|
-| vm_id | The Id of the VM. |
-| vm_public_ip | The public IP address of the VM. |
+| vm_id | Mapping of the VMs name and id. |
+| vm_private_ip | Mapping of the VMs name and private ip. |
+| vm_public_ip | Mapping of the VMs name and public ip. |
 
 ## Requirements
 
@@ -37,8 +39,9 @@ Simple AWS VM for testing.
 | aws_security_group.aws_vm_dev | resource |
 | aws_security_group_rule.allow_all_egress | resource |
 | aws_security_group_rule.allow_ingress | resource |
+| aws_security_group_rule.allow_ingress_sg | resource |
 
 ## Documentation
 
-Generated with [terraform-docs](https://terraform-docs.io/user-guide/introduction/)
+Generated with [terraform-docs](https://terraform-docs.io/user-guide/introduction/) .
 

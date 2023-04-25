@@ -1,7 +1,7 @@
 content: |
   # Terraform Module AWS VM DEV
 
-  Simple AWS VM for testing.
+  Simple AWS VMs for testing. Can create multiple VMs using single security group where all traffic between the VMs is allowed.
 
   {{ .Inputs }}
 
