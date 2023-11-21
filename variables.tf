@@ -52,3 +52,9 @@ variable "vm_user_data_base64" {
   description = "The user data to pass to the VM."
   default     = null
 }
+
+variable "root_volume_size" {
+  type = number
+  description = "The size of the root volume"
+  default = 20
+}
