@@ -42,6 +42,10 @@ resource "aws_instance" "aws_vm_dev" {
   associate_public_ip_address = true
   user_data_base64            = var.vm_user_data_base64
 
+  root_block_device {
+    volume_size = var.root_volume_size
+  }
+
   tags = {
     "Name" = "${var.name_prefix}aws-vm-dev-${count.index}"
   }

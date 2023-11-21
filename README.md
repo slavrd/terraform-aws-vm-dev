@@ -8,6 +8,7 @@ Simple AWS VMs for testing. Can create multiple VMs using single security group 
 |------|-------------|------|---------|:--------:|
 | ingress_cidrs | A list of CIDRs to allow incoming traffic from. | `list(string)` | n/a | yes |
 | name_prefix | A prefix to insert in the created resources' names. | `string` | `""` | no |
+| root_volume_size | The size of the root volume | `number` | `20` | no |
 | subnet_id | The Id of the AWS subnet in which to create the VM. | `string` | n/a | yes |
 | vm_count | The number of VMs to create. | `number` | `1` | no |
 | vm_image_id | The Id of the AWS AMI to use for the VM. | `string` | n/a | yes |
