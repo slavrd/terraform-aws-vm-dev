@@ -15,6 +15,12 @@ content: |
 
   Generated with [terraform-docs](https://terraform-docs.io/user-guide/introduction/) .
 
+  To generate them execute
+
+  ```bash
+  terraform-docs markdown table -c .terraform-docs.yml . > README.md
+  ```
+
 settings:
   anchor: false
   color: true
