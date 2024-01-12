@@ -54,7 +54,24 @@ variable "vm_user_data_base64" {
 }
 
 variable "root_volume_size" {
-  type = number
+  type        = number
   description = "The size of the root volume"
-  default = 20
+  default     = 20
+}
+
+variable "additional_ebs_blocks" {
+  type = map(object({
+    device_name          = string
+    size                 = optional(number, null)
+    type                 = optional(string, null)
+    iops                 = optional(number, null)
+    throughput           = optional(number, null)
+    encrypted            = optional(bool, null)
+    kms_key_id           = optional(bool, null)
+    final_snapshot       = optional(bool, null)
+    multi_attach_enabled = optional(bool, null)
+    snapshot_id          = optional(string, null)
+  }))
+  description = "A map where the values are objects with the same attributes as a aws_ebs_volume with the addition of a device_name attribute that is used for attaching it to the instance."
+  default = {}
 }
