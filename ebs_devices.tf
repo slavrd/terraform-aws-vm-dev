@@ -19,7 +19,7 @@ resource "aws_ebs_volume" "this" {
 resource "aws_volume_attachment" "this" {
   for_each    = local.all_disks
   device_name = each.value.device_name
-  volume_id   = aws_ebs_volume.this[split("+", each.key)[1]]
+  volume_id   = aws_ebs_volume.this[each.key].id
   instance_id = aws_instance.aws_vm_dev[tonumber(split("+", each.key)[0])].id
 }
 
