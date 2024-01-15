@@ -6,6 +6,7 @@ Simple AWS VMs for testing. Can create multiple VMs using single security group 
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| additional_ebs_blocks | A map where the values are objects with the same attributes as a aws_ebs_volume with the addition of a device_name attribute that is used for attaching it to the instance. | ```map(object({ device_name = string size = optional(number, null) type = optional(string, null) iops = optional(number, null) throughput = optional(number, null) encrypted = optional(bool, null) kms_key_id = optional(bool, null) final_snapshot = optional(bool, null) multi_attach_enabled = optional(bool, null) snapshot_id = optional(string, null) }))``` | `{}` | no |
 | ingress_cidrs | A list of CIDRs to allow incoming traffic from. | `list(string)` | n/a | yes |
 | name_prefix | A prefix to insert in the created resources' names. | `string` | `""` | no |
 | root_volume_size | The size of the root volume | `number` | `20` | no |
@@ -36,13 +37,21 @@ Simple AWS VMs for testing. Can create multiple VMs using single security group 
 
 | Name | Type |
 |------|------|
+| aws_ebs_volume.this | resource |
 | aws_instance.aws_vm_dev | resource |
 | aws_security_group.aws_vm_dev | resource |
 | aws_security_group_rule.allow_all_egress | resource |
 | aws_security_group_rule.allow_ingress | resource |
 | aws_security_group_rule.allow_ingress_sg | resource |
+| aws_volume_attachment.this | resource |
+| aws_subnet.this | data source |
 
 ## Documentation
 
 Generated with [terraform-docs](https://terraform-docs.io/user-guide/introduction/) .
 
+To generate them execute
+
+```bash
+terraform-docs markdown table -c .terraform-docs.yml . > README.md
+```
