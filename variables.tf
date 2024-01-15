@@ -73,5 +73,9 @@ variable "additional_ebs_blocks" {
     snapshot_id          = optional(string, null)
   }))
   description = "A map where the values are objects with the same attributes as a aws_ebs_volume with the addition of a device_name attribute that is used for attaching it to the instance."
-  default = {}
+  default     = {}
+  validation {
+    condition     = !anytrue([for k in keys(var.additional_ebs_blocks) : strcontains(k, "+")])
+    error_message = "The map kyes must not contain '+' character."
+  }
 }
