@@ -79,3 +79,9 @@ variable "additional_ebs_blocks" {
     error_message = "The map kyes must not contain '+' character."
   }
 }
+
+variable "policy_arns" {
+  type        = list(string)
+  description = "A list of policy arns to attach to an instance role."
+  default = []
+}

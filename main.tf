@@ -40,6 +40,7 @@ resource "aws_instance" "aws_vm_dev" {
   vpc_security_group_ids      = [aws_security_group.aws_vm_dev.id]
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
+  iam_instance_profile        = aws_iam_instance_profile.this.arn
   user_data_base64            = var.vm_user_data_base64
 
   root_block_device {
@@ -49,4 +50,31 @@ resource "aws_instance" "aws_vm_dev" {
   tags = {
     "Name" = "${var.name_prefix}aws-vm-dev-${count.index}"
   }
+}
+
+resource "aws_iam_instance_profile" "this" {
+  name = "${var.name_prefix}aws-vm-dev-profile"
+  role = aws_iam_role.this.name
+}
+
+resource "aws_iam_role" "this" {
+  name               = "${var.name_prefix}aws-vm-dev-role"
+  assume_role_policy = data.aws_iam_policy_document.instance_assume_role_policy.json
+}
+
+data "aws_iam_policy_document" "instance_assume_role_policy" {
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  for_each   = var.policy_arns
+  role       = aws_iam_role.this.name
+  policy_arn = each.value
 }
