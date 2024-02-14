@@ -40,7 +40,7 @@ resource "aws_instance" "aws_vm_dev" {
   vpc_security_group_ids      = [aws_security_group.aws_vm_dev.id]
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
-  iam_instance_profile        = aws_iam_instance_profile.this.arn
+  iam_instance_profile        = aws_iam_instance_profile.this.name
   user_data_base64            = var.vm_user_data_base64
 
   root_block_device {
