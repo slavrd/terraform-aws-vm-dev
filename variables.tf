@@ -81,7 +81,7 @@ variable "additional_ebs_blocks" {
 }
 
 variable "policy_arns" {
-  type        = list(string)
-  description = "A list of policy arns to attach to an instance role."
-  default = []
+  type        = map(string)
+  description = "A map where the keys are arbitrary identifiers and the values are policy arns to attach to an instance role."
+  default = {}
 }
