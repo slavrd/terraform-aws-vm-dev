@@ -18,6 +18,7 @@ Simple AWS VMs for testing. Can create multiple VMs using single security group 
 | vm_type | The type of the VM. | `string` | `"t3.medium"` | no |
 | vm_user_data_base64 | The user data to pass to the VM. | `string` | `null` | no |
 | vpc_id | The Id of the AWS VPC in which to create the resources. | `string` | n/a | yes |
+| associate_public_ip_address | Whether to associate public IP address with the instance. | `bool` | `false` | no |
 
 ## Outputs
 

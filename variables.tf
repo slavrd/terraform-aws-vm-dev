@@ -59,6 +59,12 @@ variable "root_volume_size" {
   default     = 20
 }
 
+variable "associate_public_ip_address" {
+  type = bool
+  default = false
+  description = "Whether to associate public IP address with the instance."
+}
+
 variable "additional_ebs_blocks" {
   type = map(object({
     device_name          = string
